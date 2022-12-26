@@ -1,0 +1,234 @@
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <title>job4j кинотеатр</title>
+
+    <style th:inline="text">
+        /* Мягкий скролл */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Стиль для текста и фото на главной */
+        .cinemaimg {
+            position: relative;
+            opacity: 0.85;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .cinemaimg {
+            background-image: url([[@{/images/MainCinema.jpg}]]);
+            height: 100%;
+        }
+
+        .caption {
+            position: absolute;
+            left: 0;
+            top: 30%;
+            width: 100%;
+            text-align: center;
+            color: #020101;
+        }
+
+        .caption span.border {
+            color: rgba(255, 255, 255, 0.89);
+            padding: 0px;
+            font-size: 70px;
+            letter-spacing: 5px;
+        }
+
+        h3 {
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font: 20px "Lato", sans-serif;
+            color: #111;
+        }
+    </style>
+
+    <style th:inline="text">
+        /* Стиль для навигационного указателя (стрелка на главной) */
+        .arrowdown {
+            background-position: center;
+            background-size: 175px;
+            top:195%;
+            left:47%;
+
+            position: absolute;
+            z-index: 2;
+        }
+        .arrowdown {
+            background-image: url([[@{/images/arrow.gif}]]);
+            width: 75px;
+            height: 184px;
+        }
+    </style>
+
+    <style th:inline="text">
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Стиль для навигационной панели */
+        .topnav {
+            overflow: hidden;
+            background-color: #340570;
+        }
+
+        /* Стиль для разделов навигационной панели */
+        .topnav a {
+            float: left;
+            display: block;
+            color: #FFEF40;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Стиль центр */
+        .topnav a:hover {
+            background-color: #3d4f64;
+            color: black;
+        }
+
+        /* Стиль центр */
+        .content {
+            background-color: #fafafa;
+            height: 840px;
+            padding: 10px;
+
+        }
+
+        /* Стиль подпол */
+        .footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!--Основной блок страницы приветствия-->
+<div class="cinemaimg">
+
+<!-- Заголовки на главной странице и курсор-указатель -->
+    <div class="caption">
+        <span class="border">JOB4J</span><br>
+        <span class="border">ОНЛАЙН-КИНОТЕАТР</span>
+
+<!-- Навигация по центральному курсору-->
+        <nav>
+            <a href="#page-1">
+                <span class="arrowdown"></span>
+            </a>
+        </nav>
+    </div>
+
+</div>
+
+<body>
+
+<!--Страница Меню-->
+<div class="mainMenu">
+    <div class="scroll-page" id="page-1"></div>
+</div>
+
+<div class="topnav">
+    <a class="navbar-brand" href="#">JOB4J Cinema</a>
+    <a class="nav-item nav-link active" href="#page-1">Главная <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link" th:href="@{/posts}">Киносеансы</a>
+    <a class="nav-item nav-link" th:href="@{/formAddPost}">Кинозалы</a>
+    <a class="nav-item nav-link" th:href="@{/candidates}">Купить билет</a>
+    <a class="nav-item nav-link" th:href="@{/formAddUser}">Авторизация</a>
+</div>
+
+<div class="content">
+    <p>
+    <h2 align="center">Сегодня в нашем кинотеатре!</h2>
+    <p align="center">Билеты можно приобрести онлайн</p>
+    </p>
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Индикаторы -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Обертка для слайдов -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img width="1155px" src="/images/movies/avatar.jpg" alt="Avatar">
+                <div class="carousel-caption">
+                    <h3>Los Angeles</h3>
+                    <p>James Cameron is back!</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img width="1155px" src="/images/movies/terminator.jpg" alt="Terminator">
+                <div class="carousel-caption">
+                    <h3>Chicago</h3>
+                    <p>Arni is back too!</p>
+                </div>
+            </div>
+
+            <div width="1155px" class="item">
+                <img src="/images/movies/trio.jpg" alt="Trio">
+                <div class="carousel-caption">
+                    <h3>New York</h3>
+                    <p>All of you go back!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Переключение постеров право\лево -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>Контакты:</p>
+</div>
+
+</body>
+
+</html>

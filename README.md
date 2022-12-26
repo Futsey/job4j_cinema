@@ -4,7 +4,7 @@
   - First fully self-implemented training project. 
 Let me celebrate this =)
 #### **Hooray!**
-<img src="src/main/resources/images/Uray.jpg" width="77"> 
+<img src="src/main/resources/static/Hooray.jpg" width="77"> 
 
   - It must be application a simple online cinema with the ability to select and pay for seats in the hall for a specific session.
 ________________________________________________________________________
