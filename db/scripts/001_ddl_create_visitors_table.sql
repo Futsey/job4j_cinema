@@ -6,3 +6,6 @@ CREATE TABLE if not exists visitors (
    phoneNumber TEXT NOT NULL UNIQUE,
    created timestamp
 );
+
+
+--NOT NULL UNIQUE

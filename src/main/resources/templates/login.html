@@ -1,0 +1,140 @@
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <title>job4j Кинотеатр</title>
+
+    <style th:inline="text">
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Стиль для навигационной панели */
+        .topnav {
+            overflow: hidden;
+            background-color: #340570;
+        }
+
+        /* Стиль для разделов навигационной панели */
+        .topnav a {
+            float: left;
+            display: block;
+            color: #FFEF40;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Стиль при наведении курсора на навигационную панель */
+        .topnav a:hover {
+            background-color: #040d85;
+            color: rgba(125, 234, 146, 0.92);
+        }
+
+        /* Стиль центр */
+        .content {
+            background-color: #fafafa;
+            height: 840px;
+            padding: 10px;
+
+        }
+
+        /* Стиль подпол */
+        .footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Cinema, <small th:text="${user}"></small></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="navbar-brand" href="#">JOB4J Cinema</a>
+                <a class="nav-item nav-link active" href="#page-1">Главная <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" th:href="@{/posts}">Киносеансы</a>
+                <a class="nav-item nav-link" th:href="@{/formAddPost}">Кинозалы</a>
+                <a class="nav-item nav-link" th:href="@{/candidates}">Купить билет</a>
+                <a class="nav-item nav-link" th:href="@{/formAddVisitor}">Авторизация</a>
+                <a class="nav-item nav-link" th:if="${visitor.userName == 'Гость'}" th:href="@{/loginPage}">
+                    <span th:text="${visitor.userName}"></span>
+                    <span> | Войти</span>
+                </a>
+                <a class="nav-item nav-link" th:if="${visitor.userName != 'Гость'}" th:href="@{/logout}">
+                    <span th:text="${visitor.userName}"></span>
+                    <span> | Выйти</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container pt-3">
+        <div class="row">
+            <div class="card" style="width: 100%">
+                <div class="card-header">
+                    Авторизация
+                </div>
+                <div class="card-body">
+                    <div th:if="${fail}" class="alert alert-danger" role="alert">
+                        Логин или пароль введены не верно!
+                    </div>
+                    <form th:action="@{/login}" method="POST">
+                        <div class="form-group">
+                            <label>Почта</label>
+                            <input type="text" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label>Пароль</label>
+                            <input type="text" class="form-control" name="password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="footer">
+    <p>Контакты:</p>
+</div>
+
+</body>
+
+</html>
+
+
+
+

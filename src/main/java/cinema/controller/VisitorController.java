@@ -26,56 +26,59 @@ public class VisitorController {
 
     @GetMapping("/formAddVisitor")
     public String addUser(Model model) {
-//        model.addAttribute("visitor", new Visitor(0, "Введите имя", "Введите пароль"));
+        model.addAttribute("visitor", new Visitor(0, "Введите имя", "Введите пароль",
+                "Введите электронную почту", "Введите номер телефона"));
         return "addVisitor";
     }
-//
-//    @PostMapping("/registration")
-//    public String registration(Model model, @ModelAttribute User user) {
-//        Optional<User> regUser = userService.add(user);
-//        if (regUser.isEmpty()) {
-//            model.addAttribute("message",
-//                    "Пользователь с такой почтой уже существует");
-//            return "redirect:/fail";
-//        }
-//        return "redirect:/success";
-//    }
-//
-//    @GetMapping("/fail")
-//    public String fail(Model model) {
-//        model.addAttribute("fail", "Registration failed");
-//        return "registrationFailed";
-//    }
-//
-//    @GetMapping("/success")
-//    public String success(Model model) {
-//        model.addAttribute("user", new User());
-//        model.addAttribute("success", "Registration successful");
-//        return "registrationSuccess";
-//    }
-//
-//    @GetMapping("/loginPage")
-//    public String loginPage(Model model, @RequestParam(name = "fail", required = false) Boolean fail) {
-//        model.addAttribute("fail", fail != null);
-//        return "login";
-//    }
-//
-//    @PostMapping("/login")
-//    public String login(@ModelAttribute User user, HttpServletRequest req) {
-//        Optional<User> userDb = userService.findUserByEmailAndPassword(
-//                user.getEmail(), user.getPassword()
-//        );
-//        if (userDb.isEmpty()) {
-//            return "redirect:/loginPage?fail=true";
-//        }
-//        HttpSession session = req.getSession();
-//        session.setAttribute("user", userDb.get());
-//        return "redirect:/index";
-//    }
-//
-//    @GetMapping("/logout")
-//    public String logout(HttpSession session) {
-//        session.invalidate();
-//        return "redirect:/loginPage";
-//    }
+
+    @PostMapping("/registration")
+    public String registration(Model model, @ModelAttribute Visitor visitor) {
+        Optional<Visitor> regVisitor = visitorService.add(visitor);
+        if (regVisitor.isEmpty()) {
+            model.addAttribute("message",
+                    "Пользователь с такой почтой уже существует");
+            return "redirect:/fail";
+        }
+        return "redirect:/success";
+    }
+
+    /** TODO implement html */
+    @GetMapping("/fail")
+    public String fail(Model model) {
+        model.addAttribute("fail", "Registration failed");
+        return "registrationFailed";
+    }
+
+    /** TODO implement html */
+    @GetMapping("/success")
+    public String success(Model model) {
+        model.addAttribute("user", new Visitor());
+        model.addAttribute("success", "Registration successful");
+        return "registrationSuccess";
+    }
+
+    @GetMapping("/loginPage")
+    public String loginPage(Model model, @RequestParam(name = "fail", required = false) Boolean fail) {
+        model.addAttribute("fail", fail != null);
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute Visitor visitor, HttpServletRequest req) {
+        Optional<Visitor> visitorDb = visitorService.findUserByEmailAndPassword(
+                visitor.getEmail(), visitor.getPassword()
+        );
+        if (visitorDb.isEmpty()) {
+            return "redirect:/loginPage?fail=true";
+        }
+        HttpSession session = req.getSession();
+        session.setAttribute("visitor", visitorDb.get());
+        return "redirect:/index";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/loginPage";
+    }
 }

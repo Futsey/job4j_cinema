@@ -15,5 +15,8 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/Hooray.jpg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/MainCinema.jpg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/Uray.jpg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/login.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/registrationFailed.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/registrationSuccess.html" charset="UTF-8" />
   </component>
 </project>

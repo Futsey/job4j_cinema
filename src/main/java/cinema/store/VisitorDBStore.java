@@ -19,11 +19,11 @@ public class VisitorDBStore {
     private static final Logger LOG = LoggerFactory.getLogger(VisitorDBStore.class.getName());
     private static final String SELECT_ALL = "SELECT * FROM visitors";
     private static final String SELECT_BY_ID = "SELECT * FROM visitors WHERE id = ?";
-    private static final String SELECT_BY_EMAIL_AND_PASSWORD = "SELECT * FROM users WHERE email = ? AND password = ?";
-    private static final String INSERT = "INSERT INTO users(userName, password, email, phoneNumber, created)"
+    private static final String SELECT_BY_EMAIL_AND_PASSWORD = "SELECT * FROM visitors WHERE email = ? AND password = ?";
+    private static final String INSERT = "INSERT INTO visitors(userName, password, email, phoneNumber, created)"
             + "VALUES (?, ?, ?, ?, ?)";
     private static final String UPDATE =
-            "UPDATE users SET userName = ?, email = ?, password = ?, phoneNumber = ? WHERE id = ?";
+            "UPDATE visitors SET userName = ?, email = ?, password = ?, phoneNumber = ? WHERE id = ?";
 
     public VisitorDBStore(BasicDataSource pool) {
         this.pool = pool;
@@ -45,7 +45,7 @@ public class VisitorDBStore {
     }
 
     public Optional<Visitor> add(Visitor visitor) {
-        Optional<Visitor> notNullUser = Optional.empty();
+        Optional<Visitor> notNullVisitor = Optional.empty();
         try (Connection cn = pool.getConnection();
              PreparedStatement ps =  cn.prepareStatement(INSERT,
                      PreparedStatement.RETURN_GENERATED_KEYS)
@@ -61,11 +61,11 @@ public class VisitorDBStore {
                     visitor.setId(id.getInt(1));
                 }
             }
-            notNullUser = Optional.of(visitor);
+            notNullVisitor = Optional.of(visitor);
         } catch (Exception e) {
             LOG.error("Exception: ", e);
         }
-        return notNullUser;
+        return notNullVisitor;
     }
 
     public void update(Visitor visitor) {

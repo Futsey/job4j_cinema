@@ -4,30 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01de168e-6249-49d2-8f05-19f1cb4e0970" name="Changes" comment="FIXED: added full index.html with main page, main Menu and slider. Fixed pom.">
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyleidea-libs/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/dbchangelog.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/liquibase.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/master.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/scripts/001_ddl_create_visitor_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cinema/controller/VisitorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cinema/service/VisitorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cinema/store/VisitorDBStore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/cinema/controller/IndexControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/db.properties" afterDir="false" />
+    <list default="true" id="01de168e-6249-49d2-8f05-19f1cb4e0970" name="Changes" comment="ADDED: db/log4j/master properties, script create_table, liquibase. Also implemented MVC Visitor">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cinema/filter/AuthFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cinema/util/HttpSessionUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/addVisitor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/registrationFailed.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/registrationSuccess.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cinema/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cinema/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cinema/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cinema/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cinema/model/Viewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cinema/model/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/movies/avatar.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/movieImg/avatar.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/movies/terminator.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/movieImg/terminator.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/movies/trio.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/movieImg/trio.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/dbchangelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/db/dbchangelog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/db/master.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/scripts/001_ddl_create_visitor_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/scripts/001_ddl_create_visitors_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cinema/controller/VisitorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cinema/controller/VisitorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cinema/model/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cinema/model/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cinema/store/VisitorDBStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cinema/store/VisitorDBStore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,9 +29,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="HTML File" />
         <option value="Class" />
-        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -63,53 +54,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "C:/Users/Fut/IdeaProjects/job4j_cinema/src/test/resources",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "org.infernus.idea.checkstyle.CheckStyleConfigurable",
-    "spring.configuration.checksum": "7d9b35aad4f0a6878c820620ae095258"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Fut/IdeaProjects/job4j_cinema/src/main/resources/templates&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.infernus.idea.checkstyle.CheckStyleConfigurable&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;7d9b35aad4f0a6878c820620ae095258&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Fut\IdeaProjects\job4j_cinema\src\test\resources" />
       <recent name="C:\Users\Fut\IdeaProjects\job4j_cinema\src\main\resources\templates" />
+      <recent name="C:\Users\Fut\IdeaProjects\job4j_cinema\src\test\resources" />
       <recent name="C:\Users\Fut\IdeaProjects\job4j_cinema" />
       <recent name="C:\Users\Fut\IdeaProjects\job4j_cinema\src\main\resources\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Fut\IdeaProjects\job4j_cinema\src\main\resources" />
       <recent name="C:\Users\Fut\IdeaProjects\job4j_cinema\src\main\resources\static\images\movies" />
       <recent name="C:\Users\Fut\IdeaProjects\job4j_cinema\src\main\resources\static1\images" />
       <recent name="C:\Users\Fut\IdeaProjects\job4j_cinema\src\main\resources\static1" />
       <recent name="C:\Users\Fut\IdeaProjects\job4j_cinema\src\main\resources\static\images\images\images" />
-      <recent name="C:\Users\Fut\IdeaProjects\job4j_cinema\src\main\resources\static\images\images" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="cinema.controller" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cinema.util" />
     </key>
   </component>
   <component name="RunManager">
@@ -145,7 +139,8 @@
       <workItem from="1672023805497" duration="17030000" />
       <workItem from="1672044952261" duration="7523000" />
       <workItem from="1672052500519" duration="1838000" />
-      <workItem from="1672110433490" duration="12245000" />
+      <workItem from="1672110433490" duration="18227000" />
+      <workItem from="1672136055271" duration="6884000" />
     </task>
     <task id="LOCAL-00001" summary="FIXED: added checkstyle.xml, added gitignore, added models, added README.md">
       <created>1671970962540</created>
@@ -161,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672054192698</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ADDED: db/log4j/master properties, script create_table, liquibase. Also implemented MVC Visitor">
+      <created>1672123140143</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672123140143</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +183,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="FIXED: added checkstyle.xml, added gitignore, added models, added README.md" />
     <MESSAGE value="FIXED: added full index.html with main page, main Menu and slider. Fixed pom." />
-    <option name="LAST_COMMIT_MESSAGE" value="FIXED: added full index.html with main page, main Menu and slider. Fixed pom." />
+    <MESSAGE value="ADDED: db/log4j/master properties, script create_table, liquibase. Also implemented MVC Visitor" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADDED: db/log4j/master properties, script create_table, liquibase. Also implemented MVC Visitor" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cinema/store/VisitorDBStore.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

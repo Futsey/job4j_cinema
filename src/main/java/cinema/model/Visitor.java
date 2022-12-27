@@ -15,6 +15,14 @@ public class Visitor {
     public Visitor() {
     }
 
+    public Visitor(int id, String userName, String password, String email, String phoneNumber) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public Visitor(int id, String userName, String password, String email, String phoneNumber, LocalDateTime created) {
         this.id = id;
         this.userName = userName;

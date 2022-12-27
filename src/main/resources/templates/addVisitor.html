@@ -1,0 +1,182 @@
+<html>
+
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <title>job4j Кинотеатр</title>
+
+  <style th:inline="text">
+    /* Мягкий скролл */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Стиль для текста и фото на главной */
+    .cinemaimg {
+      position: relative;
+      opacity: 0.85;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+    }
+
+    .cinemaimg {
+      background-image: url([[@{/images/MainCinema.jpg}]]);
+      height: 100%;
+    }
+
+    .caption {
+      position: absolute;
+      left: 0;
+      top: 30%;
+      width: 100%;
+      text-align: center;
+      color: #020101;
+    }
+
+    .caption span.border {
+      color: rgba(255, 255, 255, 0.89);
+      padding: 0px;
+      font-size: 70px;
+      letter-spacing: 5px;
+    }
+
+    h3 {
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font: 20px "Lato", sans-serif;
+      color: #111;
+    }
+  </style>
+
+  <style th:inline="text">
+    /* Стиль для навигационного указателя (стрелка на главной) */
+    .arrowdown {
+      background-position: center;
+      background-size: 175px;
+      top:195%;
+      left:47%;
+
+      position: absolute;
+      z-index: 2;
+    }
+    .arrowdown {
+      background-image: url([[@{/images/arrow.gif}]]);
+      width: 75px;
+      height: 184px;
+    }
+  </style>
+
+  <style th:inline="text">
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Стиль для навигационной панели */
+    .topnav {
+      overflow: hidden;
+      background-color: #340570;
+    }
+
+    /* Стиль для разделов навигационной панели */
+    .topnav a {
+      float: left;
+      display: block;
+      color: #FFEF40;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    /* Стиль при наведении курсора на навигационную панель */
+    .topnav a:hover {
+      background-color: #040d85;
+      color: rgba(125, 234, 146, 0.92);
+    }
+
+    /* Стиль центр */
+    .content {
+      background-color: #fafafa;
+      height: 840px;
+      padding: 10px;
+
+    }
+
+    /* Стиль подпол */
+    .footer {
+      background-color: #f1f1f1;
+      padding: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!--Страница Меню-->
+  <div class="container">
+    <div class="topnav">
+      <a class="navbar-brand" href="#">JOB4J Cinema</a>
+      <a class="nav-item nav-link active" href="#page-1">Главная <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" th:href="@{/posts}">Киносеансы</a>
+      <a class="nav-item nav-link" th:href="@{/formAddPost}">Кинозалы</a>
+      <a class="nav-item nav-link" th:href="@{/candidates}">Купить билет</a>
+      <a class="nav-item nav-link" th:href="@{/formAddVisitor}">Авторизация</a>
+      <a class="nav-item nav-link" th:if="${visitor.userName == 'Гость'}" th:href="@{/loginPage}">
+        <span th:text="${visitor.userName}"></span>
+        <span> | Войти</span>
+      </a>
+      <a class="nav-item nav-link" th:if="${visitor.userName != 'Гость'}" th:href="@{/logout}">
+        <span th:text="${visitor.userName}"></span>
+        <span> | Выйти</span>
+      </a>
+    </div>
+
+    <div class="row pt-3">
+      <div class="card">
+        <div class="card-header">
+          Новый пользователь.
+        </div>
+        <div class="card-body">
+          <form th:action="@{/registration}" method="POST" th:object="${visitor}" enctype="multipart/form-data">
+            <input type="hidden" name="id" th:field="*{id}"/>
+            <div class="form-group">
+              <label for="userName">Ваше имя</label>
+              <input type="text" class="form-control" name="userName" id="userName" th:placeholder="*{userName}">
+              <label for="password">Пароль</label>
+              <input type="text" class="form-control" name="password" id="password" th:placeholder="*{password}">
+              <label for="email">Электронная почта</label>
+              <input type="text" class="form-control" name="email" id="email" th:placeholder="*{email}">
+              <label for="phoneNumber">Телефон</label>
+              <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" th:placeholder="*{phoneNumber}">
+            </div>
+            <button type="submit" class="btn btn-primary">Регистрация</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
