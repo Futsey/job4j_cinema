@@ -29,7 +29,7 @@ public class VisitorService {
         return visitorStore.findById(id);
     }
 
-    public Optional<Visitor> findUserByEmailAndPassword(String email, String password) {
+    public Optional<Visitor> findVisitorByEmailAndPassword(String email, String password) {
         return visitorStore.findVisitorByEmailAndPassword(email, password);
     }
 }

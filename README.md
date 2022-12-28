@@ -6,7 +6,7 @@ Let me celebrate this =)
 #### **Hooray!**
 <img src="src/main/resources/static/Hooray.jpg" width="77"> 
 
-  - It must be application a simple online cinema with the ability to select and pay for seats in the hall for a specific session.
+  - It must be application a simple online cinema with the ability to select and pay for seats in the hall for a specific movieSession.
 ________________________________________________________________________
 >### Technologies used:
   - Spring boot;

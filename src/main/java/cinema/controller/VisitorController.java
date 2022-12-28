@@ -25,7 +25,7 @@ public class VisitorController {
     }
 
     @GetMapping("/formAddVisitor")
-    public String addUser(Model model) {
+    public String addVisitor(Model model) {
         model.addAttribute("visitor", new Visitor(0, "Введите имя", "Введите пароль",
                 "Введите электронную почту", "Введите номер телефона"));
         return "addVisitor";
@@ -65,7 +65,7 @@ public class VisitorController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute Visitor visitor, HttpServletRequest req) {
-        Optional<Visitor> visitorDb = visitorService.findUserByEmailAndPassword(
+        Optional<Visitor> visitorDb = visitorService.findVisitorByEmailAndPassword(
                 visitor.getEmail(), visitor.getPassword()
         );
         if (visitorDb.isEmpty()) {

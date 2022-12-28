@@ -134,48 +134,46 @@
 
 <body>
 
-  <!--Страница Меню-->
-  <div class="container">
-    <div class="topnav">
-      <a class="navbar-brand" href="/index">JOB4J Cinema</a>
-      <a class="nav-item nav-link active" href="/index#page-1">Главная <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" th:href="@{/movieSessions}">Киносеансы</a>
-      <a class="nav-item nav-link" th:href="@{/formAddPost}">Кинозалы</a>
-      <a class="nav-item nav-link" th:href="@{/candidates}">Купить билет</a>
-      <a class="nav-item nav-link" th:href="@{/formAddVisitor}">Регистрация</a>
-      <a class="nav-item nav-link" th:if="${visitor.userName == 'Гость'}" th:href="@{/loginPage}">
-        <span th:text="${visitor.userName}"></span>
-        <span> | Войти</span>
-      </a>
-      <a class="nav-item nav-link" th:if="${visitor.userName != 'Гость'}" th:href="@{/logout}">
-        <span th:text="${visitor.userName}"></span>
-        <span> | Выйти</span>
-      </a>
-    </div>
+<!--Страница Меню-->
+<div class="container">
+  <div class="topnav">
+    <a class="navbar-brand" href="/index">JOB4J Cinema</a>
+    <a class="nav-item nav-link active" href="/index#page-1">Главная <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link" th:href="@{/movieSessions}">Киносеансы</a>
+    <a class="nav-item nav-link" th:href="@{/formAddMovieSession}">Кинозалы</a>
+    <a class="nav-item nav-link" th:href="@{/candidates}">Купить билет</a>
+    <a class="nav-item nav-link" th:href="@{/formAddVisitor}">Регистрация</a>
+<!--    <a class="nav-item nav-link" th:if="${visitor.userName == 'Гость'}" th:href="@{/loginPage}">-->
+<!--      <span th:text="${visitor.userName}"></span>-->
+<!--      <span> | Войти</span>-->
+<!--    </a>-->
+<!--    <a class="nav-item nav-link" th:if="${visitor.userName != 'Гость'}" th:href="@{/logout}">-->
+<!--      <span th:text="${visitor.userName}"></span>-->
+<!--      <span> | Выйти</span>-->
+<!--    </a>-->
+  </div>
 
-    <div class="row pt-3">
-      <div class="card">
-        <div class="card-header">
-          Новый пользователь.
-        </div>
-        <div class="card-body">
-          <form th:action="@{/registration}" method="POST" th:object="${visitor}" enctype="multipart/form-data">
-            <input type="hidden" name="id" th:field="*{id}"/>
-            <div class="form-group">
-              <label for="userName">Ваше имя</label>
-              <input type="text" class="form-control" name="userName" id="userName" th:placeholder="*{userName}">
-              <label for="password">Пароль</label>
-              <input type="text" class="form-control" name="password" id="password" th:placeholder="*{password}">
-              <label for="email">Электронная почта</label>
-              <input type="text" class="form-control" name="email" id="email" th:placeholder="*{email}">
-              <label for="phoneNumber">Телефон</label>
-              <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" th:placeholder="*{phoneNumber}">
-            </div>
-            <button type="submit" class="btn btn-primary">Регистрация</button>
-        </div>
+  <div class="row pt-3">
+    <div class="card">
+      <div class="card-header">
+        Новая кинолента.
+      </div>
+      <div class="card-body">
+        <form th:action="@{/createMovieSession}" method="POST" th:object="${movieSession}" enctype="multipart/form-data">
+          <input type="hidden" name="id" th:field="*{id}"/>
+          <div class="form-group">
+            <label for="movieTitle">Наименование фильма</label>
+            <input type="text" class="form-control" name="movieTitle" id="movieTitle" th:placeholder="*{movieTitle}">
+          </div>
+          <div class="form-group">
+            <label for="file">Фотография</label>
+            <input type="file" class="form-control" name="file" id="file">
+          </div>
+          <button type="submit" class="btn btn-primary">Регистрация</button>
       </div>
     </div>
   </div>
+</div>
 
 </body>
 
