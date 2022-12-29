@@ -1,6 +1,7 @@
 package cinema.controller;
 
 import cinema.model.MovieSession;
+import cinema.model.Visitor;
 import cinema.service.MovieSessionService;
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.core.io.ByteArrayResource;
@@ -16,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static cinema.util.HttpSessionUtil.setGuest;
+
 @Controller
 @ThreadSafe
 public class MovieSessionController {
@@ -27,15 +30,16 @@ public class MovieSessionController {
     }
 
     @GetMapping("/formAddMovieSession")
-    public String addSession(Model model) {
+    public String addSession(Model model, HttpSession session) {
         model.addAttribute("movieSessions", new MovieSession(0, "Добавьте название фильма"));
+        setGuest(model, session);
         return "addMovieSession";
     }
 
     @GetMapping("/movieSessions")
     public String candidates(Model model, HttpSession session) {
         model.addAttribute("movieSessions", movieSessionService.findAll());
-//        setGuest(model, session);
+        setGuest(model, session);
         return "movieSessions";
     }
 
@@ -50,9 +54,9 @@ public class MovieSessionController {
     @GetMapping("/formUpdateMovieSessions/{movieSessionId}")
     public String formUpdateCandidate(Model model, @PathVariable("movieSessionId") int id, HttpSession session) {
         model.addAttribute("movieSessions", movieSessionService.findById(id));
-//        User user = (User) session.getAttribute("user");
+//        Visitor visitor = (Visitor) session.getAttribute("visitor");
 //        setGuest(model, session);
-        return "updateCandidate";
+        return "updateMovieSession";
     }
 
     @PostMapping("/updateMovieSession")

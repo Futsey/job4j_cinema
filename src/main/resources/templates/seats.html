@@ -20,51 +20,6 @@
   <title>job4j Кинотеатр</title>
 
   <style th:inline="text">
-    /* Мягкий скролл */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Стиль для текста и фото на главной */
-    .cinemaimg {
-      position: relative;
-      opacity: 0.85;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-
-    }
-
-    .cinemaimg {
-      background-image: url([[@{/images/MainCinema.jpg}]]);
-      height: 100%;
-    }
-
-    .caption {
-      position: absolute;
-      left: 0;
-      top: 30%;
-      width: 100%;
-      text-align: center;
-      color: #020101;
-    }
-
-    .caption span.border {
-      color: rgba(255, 255, 255, 0.89);
-      padding: 0px;
-      font-size: 70px;
-      letter-spacing: 5px;
-    }
-
-    h3 {
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      font: 20px "Lato", sans-serif;
-      color: #111;
-    }
-  </style>
-
-  <style th:inline="text">
     /* Стиль для навигационного указателя (стрелка на главной) */
     .arrowdown {
       background-position: center;
@@ -134,45 +89,57 @@
 
 <body>
 
-<!--Страница Меню-->
-<div class="container">
-  <div class="topnav">
-    <a class="navbar-brand" href="/index">JOB4J Cinema, <small th:text="${visitor}"></small></a>
-    <a class="nav-item nav-link active" href="/index#page-1">Главная <span class="sr-only">(current)</span></a>
-    <a class="nav-item nav-link" th:href="@{/movieSessions}">Киносеансы</a>
-    <a class="nav-item nav-link" th:href="@{/formAddMovieSession}">Добавить киносеанс</a>
-    <a class="nav-item nav-link" th:href="@{/candidates}">Купить билет</a>
-    <a class="nav-item nav-link" th:href="@{/formAddVisitor}">Регистрация</a>
-    <a class="nav-item nav-link" th:if="${visitor.userName == 'Гость'}" th:href="@{/loginPage}">
-      <span th:text="${visitor.userName}"></span>
-      <span> | Войти</span>
-    </a>
-    <a class="nav-item nav-link" th:if="${visitor.userName != 'Гость'}" th:href="@{/logout}">
-      <span th:text="${visitor.userName}"></span>
-      <span> | Выйти</span>
-    </a>
-  </div>
+<!--Основной блок страницы приветствия-->
+<div class="cinemaimg">
+  <!-- Заголовки на главной странице и курсор-указатель -->
+  <div class="caption">
+    <span class="border">JOB4J</span><br>
+    <span class="border">ОНЛАЙН-КИНОТЕАТР</span>
 
-  <div class="row pt-3">
-    <div class="card">
-      <div class="card-header">
-        Новая кинолента.
-      </div>
-      <div class="card-body">
-        <form th:action="@{/createMovieSession}" method="POST" th:object="${movieSessions}" enctype="multipart/form-data">
-          <input type="hidden" name="id" th:field="*{id}"/>
-          <div class="form-group">
-            <label for="movieTitle">Наименование фильма</label>
-            <input type="text" class="form-control" name="movieTitle" id="movieTitle" th:placeholder="*{movieTitle}">
-          </div>
-          <div class="form-group">
-            <label for="file">Фотография</label>
-            <input type="file" class="form-control" name="file" id="file">
-          </div>
-          <button type="submit" class="btn btn-primary">Регистрация</button>
-      </div>
-    </div>
+    <!-- Навигация по центральному курсору-->
+    <nav>
+      <a href="#page-1">
+        <span class="arrowdown"></span>
+      </a>
+    </nav>
   </div>
+</div>
+
+<!--Страница Меню-->
+<div class="mainMenu">
+  <div class="scroll-page" id="page-1"></div>
+</div>
+
+<div class="topnav">
+  <a class="navbar-brand" href="/index">JOB4J Cinema, <small th:text="${visitor}"></small></a>
+  <a class="nav-item nav-link active" href="/index#page-1">Главная <span class="sr-only">(current)</span></a>
+  <a class="nav-item nav-link" th:href="@{/movieSessions}">Киносеансы</a>
+  <a class="nav-item nav-link" th:href="@{/formAddMovieSession}">Добавить киносеанс</a>
+  <a class="nav-item nav-link" th:href="@{/candidates}">Купить билет</a>
+  <a class="nav-item nav-link" th:href="@{/formAddVisitor}">Регистрация</a>
+  <a class="nav-item nav-link" th:if="${visitor.userName == 'Гость'}" th:href="@{/loginPage}">
+    <span th:text="${visitor.userName}"></span>
+    <span> | Войти</span>
+  </a>
+  <a class="nav-item nav-link" th:if="${visitor.userName != 'Гость'}" th:href="@{/logout}">
+    <span th:text="${visitor.userName}"></span>
+    <span> | Выйти</span>
+  </a>
+</div>
+
+<p>Used on a button:</p>
+<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
+<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
+<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
+<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
+<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
+<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
+<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
+<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
+<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
+
+<div class="footer">
+  <p>Контакты:</p>
 </div>
 
 </body>

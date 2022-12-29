@@ -96,4 +96,9 @@ public class Visitor {
     public int hashCode() {
         return Objects.hash(id, email, phoneNumber, created);
     }
+
+    @Override
+    public String toString() {
+        return userName;
+    }
 }
