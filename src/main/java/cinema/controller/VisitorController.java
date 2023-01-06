@@ -31,6 +31,8 @@ public class VisitorController {
         return "addVisitor";
     }
 
+    /** TODO implement updateVisitor*/
+
     @PostMapping("/registration")
     public String registration(Model model, @ModelAttribute Visitor visitor) {
         Optional<Visitor> regVisitor = visitorService.add(visitor);
@@ -42,14 +44,12 @@ public class VisitorController {
         return "redirect:/success";
     }
 
-    /** TODO implement html */
     @GetMapping("/fail")
     public String fail(Model model) {
         model.addAttribute("fail", "Registration failed");
         return "registrationFailed";
     }
 
-    /** TODO implement html */
     @GetMapping("/success")
     public String success(Model model) {
         model.addAttribute("user", new Visitor());

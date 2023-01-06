@@ -126,11 +126,73 @@
         /* Стиль подпол */
         .footer {
             background-color: #f1f1f1;
-            padding: 10px;
+            padding: 25px;
+        }
+    </style>
+
+    <style th:inline="text">
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1340px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .text {font-size: 11px}
         }
     </style>
 
 </head>
+
 
 <body>
 
@@ -160,7 +222,7 @@
     <a class="nav-item nav-link active" href="/index#page-1">Главная <span class="sr-only">(current)</span></a>
     <a class="nav-item nav-link" th:href="@{/movieSessions}">Киносеансы</a>
     <a class="nav-item nav-link" th:href="@{/formAddMovieSession}">Добавить киносеанс</a>
-    <a class="nav-item nav-link" th:href="@{/candidates}">Купить билет</a>
+    <a class="nav-item nav-link" th:href="@{/formAddTicket}">Купить билет</a>
     <a class="nav-item nav-link" th:href="@{/formAddVisitor}">Регистрация</a>
     <a class="nav-item nav-link" th:if="${visitor.userName == 'Гость'}" th:href="@{/loginPage}">
         <span th:text="${visitor.userName}"></span>
@@ -172,74 +234,59 @@
     </a>
 </div>
 
-<div class="content">
-    <p>
-    <h2 align="center">Сегодня в нашем кинотеатре!</h2>
-    <p align="center">Билеты можно приобрести онлайн</p>
-    </p>
+<h2 align="center">Сегодня в нашем кинотеатре!</h2>
+<p align="center">для покупки билета кликните на постер</p>
 
-    <div id="myCarousel" class="carousel slid" data-ride="carousel">
-        <!-- Индикаторы -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+<div class="slideshow-container">
 
-        <!-- Обертка для слайдов -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <img width="755px" src="/images/movieImg/avatar.jpg" alt="Avatar">
-                <div class="carousel-caption">
-                    <h3>ЗАЛ 1</h3>
-                    <p>James Cameron is back!</p>
-                </div>
-            </div>
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <div><a href="/movieSessions"><img style="width:100%" src="/images/movieImg/avatar.jpg" alt="Avatar"></a></div>
+        <div class="text">Avatar</div>
+    </div>
 
-            <div class="item">
-                <img width="655px" src="/images/movieImg/terminator.jpg" alt="Terminator">
-                <div class="carousel-caption">
-                    <h3>ЗАЛ 2</h3>
-                    <p>Arni is back too!</p>
-                </div>
-            </div>
+    <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <div><a href="/movieSessions"><img style="width:100%" src="/images/movieImg/term.jpg" alt="terminator"></a></div>
+        <div class="text">Terminator</div>
+    </div>
 
-            <div class="item">
-                <img width="655px" src="/images/movieImg/trio.jpg" alt="Trio">
-                <div class="carousel-caption">
-                    <h3>ЗАЛ 3</h3>
-                    <p>All of you go back!</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Переключение постеров право\лево -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-        </a>
+    <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <div><a href="/movieSessions"><img style="width:100%" src="/images/movieImg/trio.jpg" alt="trio"></a></div>
+        <div class="text">Three in one</div>
     </div>
 
 </div>
+<br>
 
-<p>Used on a button:</p>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-
-<div class="footer">
-    <p>Контакты:</p>
+<div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
 </div>
+
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>
 
 </body>
 

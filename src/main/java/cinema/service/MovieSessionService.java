@@ -14,8 +14,8 @@ public class MovieSessionService {
 
     private MovieSessionDBStore sessionStore;
 
-    public MovieSessionService(MovieSessionDBStore visitorStore) {
-        this.sessionStore = visitorStore;
+    public MovieSessionService(MovieSessionDBStore sessionStore) {
+        this.sessionStore = sessionStore;
     }
 
     public Optional<MovieSession> add(MovieSession movieSession) {

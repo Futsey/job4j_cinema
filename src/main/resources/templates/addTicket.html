@@ -1,7 +1,5 @@
 <html>
 
-<html>
-
 <head>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +21,7 @@
 
   <style th:inline="text">
     .btn {
-      background-color: #040d85;
+      background-color: #83e570;
       border: none;
       color: white;
       padding: 16px 32px;
@@ -68,13 +66,26 @@
       background-color: #040d85;
       color: rgba(125, 234, 146, 0.92);
     }
+
+    /* Стиль центр */
+    .content {
+      background-color: #fafafa;
+      height: 840px;
+      padding: 10px;
+
+    }
+
+    /* Стиль подпол */
+    .footer {
+      background-color: #f1f1f1;
+      padding: 10px;
+    }
   </style>
 
 </head>
 
 <body>
 
-<!--Страница Меню-->
 <div class="container">
 <div class="topnav">
   <a class="navbar-brand" href="/index">JOB4J Cinema, <small th:text="${visitor}"></small></a>
@@ -93,26 +104,18 @@
   </a>
 </div>
 
-  <div class="row pt-3">
-    <div class="card">
-      <div class="card-header">
-        Новая кинолента.
-      </div>
-      <div class="card-body">
-        <form th:action="@{/createMovieSession}" method="POST" th:object="${movieSessions}" enctype="multipart/form-data">
-          <input type="hidden" name="id" th:field="*{id}"/>
-          <div class="form-group">
-            <label for="movieTitle">Наименование фильма</label>
-            <input type="text" class="form-control" name="movieTitle" id="movieTitle" th:placeholder="*{movieTitle}">
-          </div>
-          <div class="form-group">
-            <label for="file">Фотография</label>
-            <input type="file" class="form-control" name="file" id="file">
-          </div>
-          <button type="submit" class="btn btn-primary">Регистрация</button>
-      </div>
-    </div>
-  </div>
+<p style="text-align: center; padding:14px 16px; width: 55px" >Выберите место:</p>
+<a th:href="@{/createTicket}" class="btn" role="button" id="1">1</a>
+<a th:href="@{/createTicket}" class="btn" role="button" id="2">2</a>
+<a th:href="@{/createTicket}" class="btn" role="button" id="3">3</a>
+<br>
+<a th:href="@{/createTicket}" class="btn" role="button" id="4">4</a>
+<a th:href="@{/createTicket}" class="btn" role="button" id="5">5</a>
+<a th:href="@{/createTicket}" class="btn" role="button" id="6">6</a>
+<br>
+<a th:href="@{/createTicket}" class="btn" role="button" id="7">7</a>
+<a th:href="@{/createTicket}" class="btn" role="button" id="8">8</a>
+<a th:href="@{/createTicket}" class="btn" role="button" id="9">9</a>
 </div>
 
 </body>

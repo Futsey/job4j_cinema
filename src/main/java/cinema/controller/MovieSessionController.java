@@ -50,12 +50,12 @@ public class MovieSessionController {
         movieSessionService.add(movieSession);
         return "redirect:/movieSessions";
     }
-
+/** TODO implement updateMovieSession*/
     @GetMapping("/formUpdateMovieSessions/{movieSessionId}")
     public String formUpdateCandidate(Model model, @PathVariable("movieSessionId") int id, HttpSession session) {
         model.addAttribute("movieSessions", movieSessionService.findById(id));
-//        Visitor visitor = (Visitor) session.getAttribute("visitor");
-//        setGuest(model, session);
+        Visitor visitor = (Visitor) session.getAttribute("visitor");
+        setGuest(model, session);
         return "updateMovieSession";
     }
 

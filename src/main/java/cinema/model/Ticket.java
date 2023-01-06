@@ -5,17 +5,20 @@ import java.util.Objects;
 public class Ticket {
 
     int id;
-    Visitor visitor;
-    MovieSession movieSession;
-    Auditorium auditorium;
-    PayMent payMent;
+    int visitorID;
+    int movieSessionID;
+    int posRow;
+    int posCell;
 
-    public Ticket(int id, Visitor visitor, MovieSession movieSession, Auditorium auditorium, PayMent payMent) {
+    public Ticket() {
+    }
+
+    public Ticket(int id, int visitorID, int movieSessionID, int posRow, int posCell) {
         this.id = id;
-        this.visitor = visitor;
-        this.movieSession = movieSession;
-        this.auditorium = auditorium;
-        this.payMent = payMent;
+        this.visitorID = visitorID;
+        this.movieSessionID = movieSessionID;
+        this.posRow = posRow;
+        this.posCell = posCell;
     }
 
     public int getId() {
@@ -26,36 +29,36 @@ public class Ticket {
         this.id = id;
     }
 
-    public Visitor getVisitor() {
-        return visitor;
+    public int getVisitorID() {
+        return visitorID;
     }
 
-    public void setVisitor(Visitor visitor) {
-        this.visitor = visitor;
+    public void setVisitorID(int visitorID) {
+        this.visitorID = visitorID;
     }
 
-    public MovieSession getMovieSession() {
-        return movieSession;
+    public int getMovieSessionID() {
+        return movieSessionID;
     }
 
-    public void setMovieSession(MovieSession movieSession) {
-        this.movieSession = movieSession;
+    public void setMovieSessionID(int movieSessionID) {
+        this.movieSessionID = movieSessionID;
     }
 
-    public Auditorium getAuditorium() {
-        return auditorium;
+    public int getPosRow() {
+        return posRow;
     }
 
-    public void setAuditorium(Auditorium auditorium) {
-        this.auditorium = auditorium;
+    public void setPosRow(int posRow) {
+        this.posRow = posRow;
     }
 
-    public PayMent getPayMent() {
-        return payMent;
+    public int getPosCell() {
+        return posCell;
     }
 
-    public void setPayMent(PayMent payMent) {
-        this.payMent = payMent;
+    public void setPosCell(int posCell) {
+        this.posCell = posCell;
     }
 
     @Override
@@ -67,11 +70,11 @@ public class Ticket {
             return false;
         }
         Ticket ticket = (Ticket) o;
-        return id == ticket.id && Objects.equals(visitor, ticket.visitor) && Objects.equals(movieSession, ticket.movieSession) && Objects.equals(auditorium, ticket.auditorium) && Objects.equals(payMent, ticket.payMent);
+        return id == ticket.id && visitorID == ticket.visitorID && movieSessionID == ticket.movieSessionID;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, visitor, movieSession, auditorium, payMent);
+        return Objects.hash(id, visitorID, movieSessionID);
     }
 }

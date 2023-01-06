@@ -20,24 +20,21 @@
   <title>job4j Кинотеатр</title>
 
   <style th:inline="text">
-    /* Стиль для навигационного указателя (стрелка на главной) */
-    .arrowdown {
-      background-position: center;
-      background-size: 175px;
-      top:195%;
-      left:47%;
-
-      position: absolute;
-      z-index: 2;
+    .btn {
+      background-color: #83e570;
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      text-align: center;
+      font-size: 16px;
+      margin: 4px 2px;
+      opacity: 0.6;
+      transition: 0.3s;
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
     }
-    .arrowdown {
-      background-image: url([[@{/images/arrow.gif}]]);
-      width: 75px;
-      height: 184px;
-    }
-  </style>
 
-  <style th:inline="text">
     * {
       box-sizing: border-box;
       font-family: Arial, Helvetica, sans-serif;
@@ -89,33 +86,18 @@
 
 <body>
 
-<!--Основной блок страницы приветствия-->
-<div class="cinemaimg">
-  <!-- Заголовки на главной странице и курсор-указатель -->
-  <div class="caption">
-    <span class="border">JOB4J</span><br>
-    <span class="border">ОНЛАЙН-КИНОТЕАТР</span>
-
-    <!-- Навигация по центральному курсору-->
-    <nav>
-      <a href="#page-1">
-        <span class="arrowdown"></span>
-      </a>
-    </nav>
-  </div>
-</div>
-
 <!--Страница Меню-->
 <div class="mainMenu">
   <div class="scroll-page" id="page-1"></div>
 </div>
 
+<div class="container">
 <div class="topnav">
   <a class="navbar-brand" href="/index">JOB4J Cinema, <small th:text="${visitor}"></small></a>
   <a class="nav-item nav-link active" href="/index#page-1">Главная <span class="sr-only">(current)</span></a>
   <a class="nav-item nav-link" th:href="@{/movieSessions}">Киносеансы</a>
   <a class="nav-item nav-link" th:href="@{/formAddMovieSession}">Добавить киносеанс</a>
-  <a class="nav-item nav-link" th:href="@{/candidates}">Купить билет</a>
+  <a class="nav-item nav-link" th:href="@{/formAddTicket}">Купить билет</a>
   <a class="nav-item nav-link" th:href="@{/formAddVisitor}">Регистрация</a>
   <a class="nav-item nav-link" th:if="${visitor.userName == 'Гость'}" th:href="@{/loginPage}">
     <span th:text="${visitor.userName}"></span>
@@ -126,21 +108,30 @@
     <span> | Выйти</span>
   </a>
 </div>
-
-<p>Used on a button:</p>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-<button style="font-size:10px">1 <i class="fa fa-edit"></i></button>
-
-<div class="footer">
-  <p>Контакты:</p>
 </div>
+
+<!--<div class="row pt-3">-->
+<!--  <div class="card">-->
+<!--    <div class="card-header">-->
+<!--      Купить билет-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--      <form th:action="@{/createTicket}" method="POST" th:object="${ticket}" enctype="multipart/form-data">-->
+<!--        <input type="hidden" name="id" th:field="*{id}"/>-->
+<!--&lt;!&ndash;        <input type="hidden" name="id" th:field="*{visitorID}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="hidden" name="id" th:field="*{movieSessionID}"/>&ndash;&gt;-->
+<!--        <div class="form-group">-->
+<!--          <label for="movieTitle">Наименование фильма</label>-->
+<!--          <input type="text" class="form-control" name="movieTitle" id="movieTitle" th:placeholder="*{movieTitle}">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--          <label for="file">Фотография</label>-->
+<!--          <input type="file" class="form-control" name="file" id="file">-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-primary">Регистрация</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 </body>
 
