@@ -42,30 +42,31 @@ public class TicketController {
         return "redirect:/myTickets";
     }
 
-//    /** TODO implement updateMovieSession*/
-//    @GetMapping("/formUpdateMovieSessions/{movieSessionId}")
-//    public String formUpdateCandidate(Model model, @PathVariable("movieSessionId") int id, HttpSession session) {
-//        model.addAttribute("movieSessions", movieSessionService.findById(id));
-////        Visitor visitor = (Visitor) session.getAttribute("visitor");
-////        setGuest(model, session);
-//        return "updateMovieSession";
-//    }
-//
-//    @PostMapping("/updateMovieSession")
-//    public String updateCandidate(@ModelAttribute MovieSession movieSession,
-//                                  @RequestParam("file") MultipartFile file) throws IOException {
-//        movieSession.setPoster(file.getBytes());
-//        movieSessionService.update(movieSession);
-//        return "redirect:/movieSessions";
-//    }
-//
-//    @GetMapping("/moviePoster/{movieSessionId}")
-//    public ResponseEntity<Resource> download(@PathVariable("movieSessionId") Integer movieSessionId) {
-//        MovieSession movieSession = movieSessionService.findById(movieSessionId);
-//        return ResponseEntity.ok()
-//                .headers(new HttpHeaders())
-//                .contentLength(movieSession.getPoster().length)
-//                .contentType(MediaType.parseMediaType("application/octet-stream"))
-//                .body(new ByteArrayResource(movieSession.getPoster()));
-//    }
+    /** TODO implement updateMovieSession
+    @GetMapping("/formUpdateMovieSessions/{movieSessionId}")
+    public String formUpdateCandidate(Model model, @PathVariable("movieSessionId") int id, HttpSession session) {
+        model.addAttribute("movieSessions", movieSessionService.findById(id));
+        Visitor visitor = (Visitor) session.getAttribute("visitor");
+        setGuest(model, session);
+        return "updateMovieSession";
+    }
+
+    @PostMapping("/updateMovieSession")
+    public String updateCandidate(@ModelAttribute MovieSession movieSession,
+                                  @RequestParam("file") MultipartFile file) throws IOException {
+        movieSession.setPoster(file.getBytes());
+        movieSessionService.update(movieSession);
+        return "redirect:/movieSessions";
+    }
+
+    @GetMapping("/moviePoster/{movieSessionId}")
+    public ResponseEntity<Resource> download(@PathVariable("movieSessionId") Integer movieSessionId) {
+        MovieSession movieSession = movieSessionService.findById(movieSessionId);
+        return ResponseEntity.ok()
+                .headers(new HttpHeaders())
+                .contentLength(movieSession.getPoster().length)
+                .contentType(MediaType.parseMediaType("application/octet-stream"))
+                .body(new ByteArrayResource(movieSession.getPoster()));
+    }
+    */
 }
